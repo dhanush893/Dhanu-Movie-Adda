@@ -1,4 +1,4 @@
-# Dhanu Movie Adda - Premium Cinematic Streaming Platform
+d# Dhanu Movie Adda - Premium Cinematic Streaming Platform
 
 A premium, highly responsive dark cinematic movie streaming web UI platform designed cleanly with raw native modern core features: **HTML5**, **CSS3 Custom Design Properties**, and **Optimized Native Vanilla JavaScript**.
 
