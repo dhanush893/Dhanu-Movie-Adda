@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dhanu Movie Adda - Premium Cinematic Streaming</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="loader" class="loader-container">
+        <div class="spinner"></div>
+        <h1 class="loader-logo">DHANU MOVIE ADDA</h1>
+    </div>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo" id="brand-logo">
+                <span class="accent-text">DHANU</span> MOVIE ADDA
+            </a>
+            
+            <nav class="nav-menu" id="nav-menu">
+                <a href="#" class="nav-link active" data-target="home-view">Home</a>
+                <a href="#" class="nav-link" data-target="movies-view">Movies</a>
+                <a href="#" class="nav-link" data-target="tv-view">TV Shows</a>
+                <a href="#" class="nav-link" data-target="trending-view">Trending</a>
+                <a href="#" class="nav-link" data-target="mylist-view">My List</a>
+                <a href="#" class="nav-link" data-target="about-view">About</a>
+                <a href="#" class="nav-link" data-target="contact-view">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Search movies, TV shows...">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="hamburger" id="hamburger-menu" aria-label="Open Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        
+        <section id="search-view" class="content-section hidden">
+            <h2 class="section-title">Search Results for: <span id="search-query-text" class="accent-text"></span></h2>
+            <div class="movie-grid" id="search-results-grid"></div>
+        </section>
+
+        <div id="home-view" class="view-panel">
+            <section class="hero" id="hero-banner">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <span class="hero-tag">FEATURED SPOTLIGHT</span>
+                    <h1 class="hero-title" id="hero-title">Interstellar Voyage</h1>
+                    <p class="hero-description" id="hero-description">A team of explorers travel beyond this galaxy to discover whether mankind has a future among the stars in this breathtaking cinematic masterpiece.</p>
+                    <div class="hero-meta">
+                        <span class="hero-meta-item"><i class="fas fa-star text-gold"></i> 8.7</span>
+                        <span class="hero-meta-item">2024</span>
+                        <span class="hero-meta-item">169 min</span>
+                        <span class="hero-meta-item bg-accent-tag">Sci-Fi</span>
+                    </div>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" id="hero-watch-btn"><i class="fas fa-play"></i> Watch Now</button>
+                        <button class="btn btn-secondary" id="hero-info-btn"><i class="fas fa-info-circle"></i> More Info</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2 class="section-title">Continue Watching</h2>
+                <div class="movie-row-wrapper">
+                    <div class="movie-row" id="continue-watching-row"></div>
+                </div>
+            </section>
+
+            <section class="content-section categories-section">
+                <h2 class="section-title">Browse by Genre</h2>
+                <div class="category-chips" id="category-chips-container">
+                    <button class="chip active" data-genre="all">All Genres</button>
+                    <button class="chip" data-genre="Action">Action</button>
+                    <button class="chip" data-genre="Comedy">Comedy</button>
+                    <button class="chip" data-genre="Horror">Horror</button>
+                    <button class="chip" data-genre="Thriller">Thriller</button>
+                    <button class="chip" data-genre="Romance">Romance</button>
+                    <button class="chip" data-genre="Sci-Fi">Sci-Fi</button>
+                    <button class="chip" data-genre="Animation">Animation</button>
+                    <button class="chip" data-genre="South Indian">South Indian</button>
+                    <button class="chip" data-genre="Hollywood">Hollywood</button>
+                </div>
+                <div class="movie-grid dynamic-genre-grid hidden" id="genre-filtered-grid"></div>
+            </section>
+
+            <section class="content-section">
+                <h2 class="section-title">Trending Now</h2>
+                <div class="movie-row-wrapper">
+                    <div class="movie-row" id="trending-row"></div>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2 class="section-title">Popular Choices</h2>
+                <div class="movie-row-wrapper">
+                    <div class="movie-row" id="popular-row"></div>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2 class="section-title">Recently Added</h2>
+                <div class="movie-row-wrapper">
+                    <div class="movie-row" id="recently-added-row"></div>
+                </div>
+            </section>
+        </div>
+
+        <section id="movies-view" class="content-section view-panel hidden">
+            <h2 class="section-title">Blockbuster Movies</h2>
+            <div class="movie-grid" id="movies-standalone-grid"></div>
+        </section>
+
+        <section id="tv-view" class="content-section view-panel hidden">
+            <h2 class="section-title">Binge-Worthy TV Shows</h2>
+            <div class="movie-grid" id="tv-standalone-grid"></div>
+        </section>
+
+        <section id="trending-view" class="content-section view-panel hidden">
+            <h2 class="section-title">Top Trending This Week</h2>
+            <div class="movie-grid" id="trending-standalone-grid"></div>
+        </section>
+
+        <section id="mylist-view" class="content-section view-panel hidden">
+            <h2 class="section-title">My Watchlist</h2>
+            <div class="movie-grid" id="mylist-grid"></div>
+            <div id="mylist-empty-state" class="empty-state hidden">
+                <i class="fas fa-heart-broken empty-icon"></i>
+                <p>Your watchlist feels lonely. Add movies or shows to keep track of what to watch next!</p>
+            </div>
+        </section>
+
+        <section id="about-view" class="content-section view-panel hidden">
+            <div class="about-container">
+                <h2 class="section-title">About Dhanu Movie Adda</h2>
+                <div class="about-card">
+                    <p>Welcome to <strong>Dhanu Movie Adda</strong>, your ultimate customized entertainment portal. We deliver a fluid, high-fidelity UI platform built purely on vanilla web core modules without modern framework bloatware. Enjoy seamless browsing, instant search processing, customizable lists, adaptive configurations, and custom cinematic layout styling optimized heavily across desktop platforms down directly to handheld touchscreens.</p>
+                    <p>Our library spans across legendary cinematic verticals: from Hollywood marvels and breathtaking South Indian blockbusters to highly immersive Sci-Fi epics and thrilling psychological experiences.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact-view" class="content-section view-panel hidden">
+            <div class="contact-container">
+                <h2 class="section-title">Connect With Us</h2>
+                <form class="contact-form" id="contact-form" onsubmit="event.preventDefault(); alert('Message dispatched! Thank you for connecting with Dhanu Movie Adda.'); this.reset();">
+                    <div class="form-group">
+                        <label for="contact-name">Full Name</label>
+                        <input type="text" id="contact-name" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email">Email Address</label>
+                        <input type="email" id="contact-email" required placeholder="john@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-message">Your Message</label>
+                        <textarea id="contact-message" rows="5" required placeholder="Tell us how we can assist you..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <div class="modal-backdrop hidden" id="movie-modal">
+        <div class="modal-card">
+            <button class="modal-close" id="modal-close-btn" aria-label="Close Modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body">
+                <div class="modal-poster-wrapper">
+                    <img src="" alt="" id="modal-poster" class="modal-poster">
+                </div>
+                <div class="modal-info">
+                    <h2 id="modal-title" class="modal-title"></h2>
+                    <div class="modal-meta-row">
+                        <span id="modal-year"></span>
+                        <span id="modal-runtime"></span>
+                        <span id="modal-rating" class="modal-rating-pill"><i class="fas fa-star"></i> </span>
+                    </div>
+                    <div class="modal-genres" id="modal-genres"></div>
+                    <p id="modal-description" class="modal-description"></p>
+                    <div class="modal-cast-info">
+                        <strong>Starring:</strong> <span id="modal-cast"></span>
+                    </div>
+                    <div class="modal-actions">
+                        <a href="#" id="modal-trailer-btn" target="_blank" class="btn btn-primary"><i class="fas fa-play"></i> Watch Trailer</a>
+                        <button id="modal-watchlist-btn" class="btn btn-secondary"><i class="fas fa-plus"></i> Add to List</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button id="scroll-top-btn" class="scroll-top-btn" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-branding">
+                <a href="#" class="logo"><span class="accent-text">DHANU</span> MOVIE ADDA</a>
+                <p class="footer-tagline">Stream your favorite cinematic masterpieces and original titles without premium payment hurdles.</p>
+            </div>
+            <div class="footer-links-group">
+                <h3>Navigation</h3>
+                <ul class="footer-links">
+                    <li><a href="#" class="foot-nav-link" data-target="home-view">Home</a></li>
+                    <li><a href="#" class="foot-nav-link" data-target="movies-view">Movies</a></li>
+                    <li><a href="#" class="foot-nav-link" data-target="tv-view">TV Shows</a></li>
+                    <li><a href="#" class="foot-nav-link" data-target="mylist-view">My Watchlist</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-group">
+                <h3>Legal & Help</h3>
+                <ul class="footer-links">
+                    <li><a href="#" class="foot-nav-link" data-target="about-view">About Platform</a></li>
+                    <li><a href="#" class="foot-nav-link" data-target="contact-view">Contact Support</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Use</a></li>
+                </ul>
+            </div>
+            <div class="footer-socials">
+                <h3>Follow the Adda</h3>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Dhanu Movie Adda. Crafted with cinematic passion. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+          </html>
+
