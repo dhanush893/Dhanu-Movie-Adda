@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dhanu Movie Adda - Premium Movie & TV Shows Streaming Platform">
+    <meta name="keywords" content="movies, tv shows, streaming, entertainment">
+    <meta name="author" content="Dhanu Movie Adda">
+    <title>Dhanu Movie Adda - Stream Premium Movies & TV Shows</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loader" id="loader">
+        <div class="spinner"></div>
+        <p>Loading Dhanu Movie Adda...</p>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <!-- Logo -->
+            <div class="nav-logo">
+                <a href="index.html">
+                    <i class="fas fa-film"></i>
+                    <span>Dhanu Movie Adda</span>
+                </a>
+            </div>
+
+            <!-- Navigation Links -->
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#movies-section" class="nav-link" data-page="movies">Movies</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#tvshows-section" class="nav-link" data-page="tvshows">TV Shows</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#trending-section" class="nav-link" data-page="trending">Trending</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#mylist-section" class="nav-link" data-page="mylist">My List</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+
+            <!-- Search Bar -->
+            <div class="nav-search">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search movies, shows...">
+                <button class="search-btn" id="searchBtn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+
+            <!-- Theme Toggle -->
+            <button class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+
+            <!-- Hamburger Menu -->
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Results Page -->
+    <section id="searchResults" class="search-results hidden">
+        <div class="container">
+            <h2>Search Results</h2>
+            <div class="movies-grid" id="searchGrid"></div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <!-- Hero Banner -->
+        <section class="hero-banner" id="heroBanner">
+            <div class="hero-background" id="heroBackground"></div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1 id="heroTitle">Featured Movie</h1>
+                <p id="heroDescription">Experience cinema like never before</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" id="watchBtn">
+                        <i class="fas fa-play"></i> Watch Now
+                    </button>
+                    <button class="btn btn-secondary" id="moreInfoBtn">
+                        <i class="fas fa-info-circle"></i> More Info
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Continue Watching Section -->
+        <section class="content-section" id="continueWatching">
+            <div class="section-header">
+                <h2>Continue Watching</h2>
+                <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="movies-carousel" id="continueWatchingCarousel">
+                <!-- Dynamically populated -->
+            </div>
+        </section>
+
+        <!-- Trending Section -->
+        <section class="content-section" id="trendingSection">
+            <div class="section-header">
+                <h2>Trending Now</h2>
+                <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="movies-carousel" id="trendingCarousel">
+                <!-- Dynamically populated -->
+            </div>
+        </section>
+
+        <!-- Recently Added Section -->
+        <section class="content-section" id="recentlyAdded">
+            <div class="section-header">
+                <h2>Recently Added</h2>
+                <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="movies-carousel" id="recentlyAddedCarousel">
+                <!-- Dynamically populated -->
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="categories-section">
+            <div class="section-header">
+                <h2>Browse by Category</h2>
+            </div>
+            <div class="categories-grid" id="categoriesGrid">
+                <!-- Dynamically populated -->
+            </div>
+        </section>
+
+        <!-- Movies Section -->
+        <section class="content-section" id="moviesSection">
+            <div class="section-header">
+                <h2>Popular Movies</h2>
+                <div class="category-filters" id="categoryFilters">
+                    <!-- Dynamically populated -->
+                </div>
+            </div>
+            <div class="movies-grid" id="moviesGrid">
+                <!-- Dynamically populated -->
+            </div>
+        </section>
+
+        <!-- TV Shows Section -->
+        <section class="content-section" id="tvshowsSection">
+            <div class="section-header">
+                <h2>Popular TV Shows</h2>
+            </div>
+            <div class="movies-grid" id="tvshowsGrid">
+                <!-- Dynamically populated -->
+            </div>
+        </section>
+
+        <!-- My List Section -->
+        <section class="content-section" id="mylistSection">
+            <div class="section-header">
+                <h2>My List</h2>
+            </div>
+            <div class="movies-grid" id="mylistGrid">
+                <div class="empty-state">
+                    <i class="fas fa-bookmark"></i>
+                    <p>Your list is empty. Add movies to get started!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Movie Details Modal -->
+    <div class="modal" id="movieModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="modal-body">
+                <div class="modal-poster">
+                    <img id="modalPoster" src="" alt="Movie Poster">
+                </div>
+                
+                <div class="modal-info">
+                    <h2 id="modalTitle">Title</h2>
+                    
+                    <div class="modal-meta">
+                        <span id="modalYear" class="meta-item">2024</span>
+                        <span id="modalRuntime" class="meta-item">
+                            <i class="fas fa-clock"></i> 120 min
+                        </span>
+                        <span id="modalRating" class="meta-item rating">
+                            <i class="fas fa-star"></i> 8.5/10
+                        </span>
+                    </div>
+
+                    <div class="modal-genres" id="modalGenres">
+                        <!-- Dynamically populated -->
+                    </div>
+
+                    <div class="modal-description">
+                        <h3>Synopsis</h3>
+                        <p id="modalDescription">Description here</p>
+                    </div>
+
+                    <div class="modal-cast">
+                        <h3>Cast</h3>
+                        <div id="modalCast" class="cast-list">
+                            <!-- Dynamically populated -->
+                        </div>
+                    </div>
+
+                    <div class="modal-buttons">
+                        <button class="btn btn-primary" id="modalWatchBtn">
+                            <i class="fas fa-play"></i> Watch Now
+                        </button>
+                        <button class="btn btn-secondary" id="modalAddToList">
+                            <i class="fas fa-bookmark"></i> Add to List
+                        </button>
+                        <button class="btn btn-secondary" id="modalTrailerBtn">
+                            <i class="fas fa-video"></i> Watch Trailer
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Player Modal -->
+    <div class="modal" id="playerModal">
+        <div class="modal-content player-modal-content">
+            <button class="modal-close" id="playerClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="video-container">
+                <video id="videoPlayer" controls>
+                    <source src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop" title="Scroll to Top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Dhanu Movie Adda</h3>
+                <p>Your ultimate destination for premium movies and TV shows streaming.</p>
+                <div class="social-links">
+                    <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                    <li><a href="#terms">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="#action">Action</a></li>
+                    <li><a href="#comedy">Comedy</a></li>
+                    <li><a href="#horror">Horror</a></li>
+                    <li><a href="#romance">Romance</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Newsletter</h4>
+                <p>Subscribe to get updates on new releases</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Your email">
+                    <button>Subscribe</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Dhanu Movie Adda. All rights reserved. | Designed with <i class="fas fa-heart"></i> by Dhanush</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
