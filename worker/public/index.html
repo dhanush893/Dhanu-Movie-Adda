@@ -9,14 +9,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="Style.css">
+  <link rel="stylesheet" href="/Style.css">
 </head>
 <body>
   <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
   <header class="glass-nav">
-    <a class="brand" href="#home" aria-label="Dhanu Movies"><span class="brand-mark">D</span><span>Dhanu <b>Movies</b></span></a>
+    <a class="brand" href="/" aria-label="Dhanu Movies"><span class="brand-mark">D</span><span>Dhanu <b>Movies</b></span></a>
     <nav class="desktop-nav" aria-label="Primary">
-      <a class="active" href="#home">Home</a><a href="#movies">Movies</a><a href="#series">Series</a><a href="#trending">Trending</a><a href="#library">My List</a>
+      <a href="/#home">Home</a><a href="/#movies">Movies</a><a href="/#series">Series</a><a href="/#trending">Trending</a><a href="/#library">My List</a>
     </nav>
     <div class="nav-actions">
       <button class="icon-btn" id="searchToggle" aria-label="Search">⌕</button>
@@ -24,19 +24,38 @@
       <button class="menu-btn" id="menuToggle" aria-label="Open menu">☰</button>
     </div>
   </header>
-  <div class="search-panel glass-panel" id="searchPanel"><input id="searchInput" autocomplete="off" placeholder="Search movies, series, genres, actors…"><span id="searchStatus">0 results</span></div>
-  <main id="home">
+  <div class="search-panel glass-panel" id="searchPanel"><input id="searchInput" autocomplete="off" placeholder="Search movies, series, genres…"><span id="searchStatus">0 results</span></div>
+
+  <main id="homeView">
     <section class="hero glass-hero" id="hero"><div class="hero-backdrop" id="heroBackdrop"></div><div class="hero-shade"></div><div class="hero-content"><span class="eyebrow">DHANU ORIGINAL EXPERIENCE</span><h1 id="heroTitle">Your cinema.<br><em>Your world.</em></h1><p id="heroDescription">A beautiful place for your authorized movie collection, powered by your private catalog.</p><div class="hero-meta" id="heroMeta"></div><div class="hero-actions"><button class="primary-btn" id="heroPlay">▶ Watch now</button><button class="glass-btn" id="heroInfo">ⓘ More info</button></div></div><div class="hero-orb">✦</div></section>
-    <section class="section"><div class="section-head"><div><span class="section-kicker">PICK UP</span><h2>Continue Watching</h2></div><button class="view-all">View all ›</button></div><div class="movie-row" id="continueRow"></div></section>
-    <section class="section" id="trending"><div class="section-head"><div><span class="section-kicker">WHAT'S HOT</span><h2>Trending Now</h2></div><button class="view-all">View all ›</button></div><div class="movie-row" id="trendingRow"></div></section>
+    <section class="section"><div class="section-head"><div><span class="section-kicker">PICK UP</span><h2>Continue Watching</h2></div><button class="view-all" data-scroll="movies">View all ›</button></div><div class="movie-row" id="continueRow"></div></section>
+    <section class="section" id="trending"><div class="section-head"><div><span class="section-kicker">WHAT'S HOT</span><h2>Trending Now</h2></div><button class="view-all" data-scroll="trending">View all ›</button></div><div class="movie-row" id="trendingRow"></div></section>
     <section class="section" id="movies"><div class="section-head"><div><span class="section-kicker">YOUR CATALOG</span><h2>Movies</h2></div></div><div class="chips" id="genreChips"></div><div class="movie-grid" id="movieGrid"></div></section>
     <section class="section" id="series"><div class="section-head"><div><span class="section-kicker">BINGE NEXT</span><h2>Series</h2></div></div><div class="movie-grid" id="seriesGrid"></div></section>
     <section class="section" id="library"><div class="section-head"><div><span class="section-kicker">SAVED</span><h2>My List</h2></div></div><div class="movie-grid" id="libraryGrid"></div></section>
   </main>
-  <aside class="side-dock glass-panel" aria-label="Quick navigation"><a href="#home">⌂<span>Home</span></a><a href="#movies">◉<span>Movies</span></a><a href="#trending">◇<span>Trend</span></a><a href="#library">♡<span>List</span></a><a href="#about">ⓘ<span>About</span></a></aside>
+
+  <main id="movieView" class="movie-view hidden">
+    <a class="back-link" href="/">‹ Back to Dhanu Movies</a>
+    <section class="movie-detail glass-panel" id="movieDetail">
+      <div class="detail-backdrop" id="routeBackdrop"></div><div class="detail-shade"></div>
+      <div class="route-poster" id="routePoster"></div>
+      <div class="route-info">
+        <span class="section-kicker" id="routeType">MOVIE</span>
+        <h1 id="routeTitle">Movie</h1>
+        <div class="route-meta" id="routeMeta"></div>
+        <div class="detail-genres" id="routeGenres"></div>
+        <p id="routeDescription">No description available.</p>
+        <div class="hero-actions"><button class="primary-btn" id="routePlay">▶ Watch now</button><button class="glass-btn" id="routeSave">♡ Add to list</button></div>
+      </div>
+    </section>
+    <section class="section related-section"><div class="section-head"><div><span class="section-kicker">YOU MAY ALSO LIKE</span><h2>More from Dhanu</h2></div></div><div class="movie-row" id="relatedRow"></div></section>
+  </main>
+
+  <aside class="side-dock glass-panel" aria-label="Quick navigation"><a href="/#home">⌂<span>Home</span></a><a href="/#movies">◉<span>Movies</span></a><a href="/#trending">◇<span>Trend</span></a><a href="/#library">♡<span>List</span></a><a href="/#about">ⓘ<span>About</span></a></aside>
   <div class="modal hidden" id="detailsModal"><div class="modal-card glass-panel"><button class="modal-close" id="modalClose">×</button><div class="detail-cover" id="detailCover"></div><div class="detail-content"><span class="section-kicker" id="detailType">MOVIE</span><h2 id="detailTitle"></h2><div class="detail-meta" id="detailMeta"></div><div class="detail-genres" id="detailGenres"></div><p id="detailDescription"></p><div class="hero-actions"><button class="primary-btn" id="detailPlay">▶ Watch now</button><button class="glass-btn" id="detailSave">♡ Add to list</button></div></div></div></div>
   <div class="modal hidden" id="playerModal"><div class="player-card glass-panel"><button class="modal-close" id="playerClose">×</button><video id="videoPlayer" controls playsinline></video><p id="playerTitle"></p></div></div>
   <footer id="about"><strong>DHANU MOVIES</strong><span>Original Liquid Glass streaming experience · No account required</span><small>Only content you own or are authorized to distribute.</small></footer>
-  <script src="script.js"></script>
+  <script src="/script.js"></script>
 </body>
 </html>
