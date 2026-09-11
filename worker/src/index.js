@@ -10,15 +10,16 @@ export default {
     if(request.method==='OPTIONS') return new Response(null,{headers:cors});
     const url=new URL(request.url);
     try{
-      if(url.pathname==='/api/health') return json({ok:true,service:'dhanu-movies-api'});
-      if(url.pathname==='/api/movies'&&request.method==='GET'){
+      if(url.pathname==='/'||url.pathname==='/api/health') return json({ok:true,service:'dhanu-movies-api',status:'online'});
+      if(url.pathname==='/api/movies'||url.pathname==='/api/movies/'){
+        if(request.method!=='GET') return json({error:'Method not allowed'},405);
         const {results}=await env.DB.prepare('SELECT id,title,year,genres,runtime,rating,description,type,image_url AS image,file_id AS fileId,thumb_file_id AS thumbFileId,created_at FROM movies ORDER BY created_at DESC LIMIT 500').all();
         return json(results.map(x=>({...x,genres:x.genres?JSON.parse(x.genres):[]})));
       }
       if(url.pathname.startsWith('/media/')&&request.method==='GET') return streamTelegramFile(decodeURIComponent(url.pathname.slice(7)),request,env);
-      if(url.pathname==='/telegram/webhook'&&request.method==='POST') return webhook(request,env);
+      if((url.pathname==='/telegram/webhook'||url.pathname==='/telegram/webhook/')&&request.method==='POST') return webhook(request,env);
       return json({error:'Not found'},404);
-    }catch(error){console.error(error);return json({error:'Server error'},500)}
+    }catch(error){console.error(error);return json({error:'Server error',message:String(error?.message||error)},500)}
   }
 };
 
@@ -28,7 +29,7 @@ async function webhook(request,env){
     if(supplied!==env.WEBHOOK_SECRET) return json({error:'Unauthorized'},401);
   }
   const update=await request.json();
-  const post=update.channel_post;
+  const post=update.channel_post||update.edited_channel_post;
   if(!post) return json({ok:true,ignored:true});
   if(env.TELEGRAM_CHANNEL_ID && String(post.chat?.id)!==String(env.TELEGRAM_CHANNEL_ID)) return json({ok:true,ignored:true});
   const media=extractMedia(post);
