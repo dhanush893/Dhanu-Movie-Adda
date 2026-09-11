@@ -1,0 +1,12 @@
+name = "dhanu-movies-api"
+main = "src/index.js"
+compatibility_date = "2026-09-11"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "dhanu-movies"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+
+[vars]
+TELEGRAM_CHANNEL_ID = "REPLACE_WITH_PRIVATE_CHANNEL_ID"
+# TELEGRAM_BOT_TOKEN and WEBHOOK_SECRET must be added as secrets, not committed here.
