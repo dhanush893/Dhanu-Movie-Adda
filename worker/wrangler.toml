@@ -1,6 +1,10 @@
 name = "dhanu-movies-api"
 main = "src/index.js"
 compatibility_date = "2026-09-11"
+workers_dev = true
+
+[assets]
+directory = "./public"
 
 [[d1_databases]]
 binding = "DB"
