@@ -5,7 +5,7 @@ compatibility_date = "2026-09-11"
 [[d1_databases]]
 binding = "DB"
 database_name = "dhanu-movies"
-database_id = "00000000-00000006-000050e3-d90e6857a28045cb3bfa2de2d0c7f041"
+database_id = "1c52125f-ac56-4ba4-a4b7-5c26646f8b4f"
 
 [vars]
 TELEGRAM_CHANNEL_ID = "-1004316703577"
