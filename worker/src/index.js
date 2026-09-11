@@ -10,7 +10,7 @@ export default {
     if(request.method==='OPTIONS') return new Response(null,{headers:cors});
     const url=new URL(request.url);
     try{
-      if(url.pathname==='/'||url.pathname==='/api/health') return json({ok:true,service:'dhanu-movies-api',status:'online'});
+      if(url.pathname==='/api/health') return json({ok:true,service:'dhanu-movies-api',status:'online'});
       if(url.pathname==='/api/movies'||url.pathname==='/api/movies/'){
         if(request.method!=='GET') return json({error:'Method not allowed'},405);
         const {results}=await env.DB.prepare('SELECT id,title,year,genres,runtime,rating,description,type,image_url AS image,file_id AS fileId,thumb_file_id AS thumbFileId,created_at FROM movies ORDER BY created_at DESC LIMIT 500').all();
@@ -18,6 +18,7 @@ export default {
       }
       if(url.pathname.startsWith('/media/')&&request.method==='GET') return streamTelegramFile(decodeURIComponent(url.pathname.slice(7)),request,env);
       if((url.pathname==='/telegram/webhook'||url.pathname==='/telegram/webhook/')&&request.method==='POST') return webhook(request,env);
+      if(env.ASSETS) return env.ASSETS.fetch(request);
       return json({error:'Not found'},404);
     }catch(error){console.error(error);return json({error:'Server error',message:String(error?.message||error)},500)}
   }
