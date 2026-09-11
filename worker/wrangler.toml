@@ -8,5 +8,5 @@ database_name = "dhanu-movies"
 database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
 
 [vars]
-TELEGRAM_CHANNEL_ID = "REPLACE_WITH_PRIVATE_CHANNEL_ID"
+TELEGRAM_CHANNEL_ID = "-1004316703577"
 # TELEGRAM_BOT_TOKEN and WEBHOOK_SECRET must be added as secrets, not committed here.
